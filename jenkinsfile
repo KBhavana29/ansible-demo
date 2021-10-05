@@ -1,12 +1,12 @@
 pipeline{
     agent any
     stages {
-        stage(check scm){
+        stage("check scm"){
             steps{
                 git 'https://github.com/KBhavana29/ansible-demo.git'
             }
         }
-        stage(ansible playbook){
+        stage("ansible playbook"){
             steps{
                 ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'dev.inv', playbook: 'apache.yml'
             }
